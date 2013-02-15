@@ -81,6 +81,7 @@ var DEFAULT_CLASSES = {
     selectedToken: "token-input-selected-token",
     highlightedToken: "token-input-highlighted-token",
     dropdown: "token-input-dropdown",
+    dropdownList: "token-input-dropdown-list",
     dropdownItem: "token-input-dropdown-item",
     dropdownItem2: "token-input-dropdown-item2",
     selectedDropdownItem: "token-input-selected-dropdown-item",
@@ -831,6 +832,7 @@ $.TokenList = function (input, url_or_data, settings) {
         if(results && results.length) {
             dropdown.empty();
             var dropdown_ul = $("<ul>")
+                .addClass($(input).data("settings").classes.dropdownList)
                 .appendTo(dropdown)
                 .mouseover(function (event) {
                     select_dropdown_item($(event.target).closest("li"));
