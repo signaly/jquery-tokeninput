@@ -300,7 +300,15 @@ $.TokenList = function (input, url_or_data, settings) {
                         }
 
                         if(dropdown_item.length) {
-                            select_dropdown_item(dropdown_item);
+	                        select_dropdown_item(dropdown_item);
+	                        var target = dropdown_item.get(0);
+	                        var border_top = target.parentNode.scrollTop;
+	                        var border_bottom = target.parentNode.scrollTop + $(target.parentNode).height();
+	                        if (target.offsetTop < border_top) {
+		                        target.parentNode.scrollTop = target.offsetTop;
+	                        } else if (target.offsetTop + $(target).height() > border_bottom) {
+		                        target.parentNode.scrollTop += target.offsetTop + $(target).height() - border_bottom;
+	                        }
                         }
                     }
                     return false;
